@@ -1,0 +1,8 @@
+.stupidHeaderSpacer {
+    height:75px;
+}
+.twisterBackground {
+    background-image: url('images/twisterPhotoshop.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
