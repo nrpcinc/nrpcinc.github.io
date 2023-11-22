@@ -8,110 +8,538 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="default.css" />
-    <title>Sample Smith Island</title>
+    <title>Smith Island Weather Report</title>
     <script src="https://kit.fontawesome.com/7075e4b0f4.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <a class="navbar-brand" href="#" onclick="navigateTo('tabHome')">Smith Island Cruises</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" id="navToHome" onclick="navigateTo('tabHome')">Home</a>
+    <main role="main">
+        <div class="container-fluid">
+            <div class="row rowPadding">
+                <div class="col-12">
+                    <div name="_divAlertSection_weatherPopup"></div>
+                </div>
+            </div>
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="tabToday" data-toggle="tab" data-target="#today" type="button" role="tab" aria-controls="today" aria-selected="true">Right Now</button>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="navToCruises" onclick="navigateTo('tabCruises')">Cruises</a>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="tabHourly" data-toggle="tab" data-target="#hourly" type="button" role="tab" aria-controls="hourly" aria-selected="false">Hourly</button>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="navToRentals" onclick="navigateTo('tabRentals')">Rentals</a>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="tabFiveDay" data-toggle="tab" data-target="#fiveDay" type="button" role="tab" aria-controls="fiveDay" aria-selected="false">Weekly</button>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="navToFood" onclick="navigateTo('tabFood')">Food</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="navToThingsToSee" onclick="navigateTo('tabThingsToSee')">Things to See</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="navToAccomodation" onclick="navigateTo('tabAccomodation')">Accomodation</a>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="tabTides" data-toggle="tab" data-target="#tides" type="button" role="tab" aria-controls="tides" aria-selected="false">Tides</button>
                 </li>
             </ul>
-            <form class="form-inline mt-2 mt-md-0">
-                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
-        </div>
-    </nav>
-
-    <main role="main">
-        <div class="tab-content dynamicDivHeight pl-1 pr-1 pb-1 border-bottom rounded-bottom">
-            <div class="tab-pane fade show active mainTabSections" role="tabpanel" id="tabHome">
-                <div class="stupidHeaderSpacer"></div>
-                <!-- Main jumbotron for a primary marketing message or call to action -->
-              
-                    <div class="container twisterBackground" style="height:550px;">
-                        <h1 class="display-3">Welcome to Smith Island Cruises</h1>
-                        <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-                        <p><a class="btn btn-primary btn-lg" onclick="navigateTo('tabCruises');" role="button">Book a trip!&nbsp;&nbsp;<i class="fa-solid fa-ship"></i></a></p>
-                    </div>
-              
-                <div class="container">
-                    <!-- Example row of columns -->
+            <div class="tab-content" id="myTabContent">
+                <div class="row rowPadding"></div>
+                <div class="tab-pane fade show active" id="today" role="tabpanel" aria-labelledby="tabToday">
                     <div class="row">
-                        <div class="col-md-4">
-                            <h2>Fine Dining</h2>
-                            <p>Visit our resturant for blah blah blah</p>
-                            <p><a class="btn btn-lg btn-secondary" onclick="navigateTo('tabFood');" role="button">View Menu&nbsp;&nbsp;<i class="fa-duotone fa-crab" style="color:firebrick"></i></a></p>
-                        </div>
-                        <div class="col-md-4">
-                            <h2>Rentals</h2>
-                            <p>To experience the whole island, it's best not to walk. Rent a bike of golf cart blha blah blah'</p>
-                            <p><a class="btn btn-lg btn-secondary" onclick="navigateTo('tabRentals');" role="button">View Rentals&nbsp;&nbsp;<i class="fa-solid fa-bicycle"></i></a></p>
-                        </div>
-                        <div class="col-md-4">
-                            <h2>Accomodation</h2>
-                            <p>Not everything can be seen in just one day. Take some time to relax and blah blah blah</p>
-                            <p><a class="btn btn-lg btn-secondary" onclick="navigateTo('tabAccomodation');" role="button">Book a Room&nbsp;&nbsp;<i class="fa-solid fa-bed" style="color:navy"></i></a></p>
+                        <div class="col-12">
+                            <button type="button" class="btn btn-primary" onclick="doButtonThing()">Get forecast</button>
                         </div>
                     </div>
-
-                    <hr>
-
-                </div> <!-- /container -->
-            </div>
-            <div id="tabCruises" class="tab-pane fade mainTabSections" role="tabpanel">
-                <div class="stupidHeaderSpacer"></div>
-                Cruise Information
-            </div>
-            <div id="tabRentals" class="tab-pane fade mainTabSections" role="tabpanel">
-                <div class="stupidHeaderSpacer"></div>
-                Rental Information
-            </div>
-            <div id="tabFood" class="tab-pane fade mainTabSections" role="tabpanel">
-                <div class="stupidHeaderSpacer"></div>
-                Food Information
-            </div>
-            <div id="tabThingsToSee" class="tab-pane fade mainTabSections" role="tabpanel">
-                <div class="stupidHeaderSpacer"></div>
-                Things to See
-            </div>
-            <div id="tabAccomodation" class="tab-pane fade mainTabSections" role="tabpanel">
-                <div class="stupidHeaderSpacer"></div>
-                Acommondation Information
+                    <div class="row">
+                        <div class="col-sm-2">
+                            Period
+                        </div>
+                        <div class="col-sm-10">
+                            <div id="tfc_period"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2">
+                            Forecast Name
+                        </div>
+                        <div class="col-sm-10">
+                            <div id="tfc_name"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2">
+                            Short forecast
+                        </div>
+                        <div class="col-sm-10">
+                            <div id="tfc_shortForecast"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2">
+                            Detailed forecast
+                        </div>
+                        <div class="col-sm-10">
+                            <div id="tfc_detailedForecast"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2">
+                            Temperature
+                        </div>
+                        <div class="col-sm-10">
+                            <div id="tfc_temperature"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2">
+                            Chance of Rain
+                        </div>
+                        <div class="col-sm-10">
+                            <div id="tfc_probabilityOfPrecipitation"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2">
+                            Relative Humidity
+                        </div>
+                        <div class="col-sm-10">
+                            <div id="tfc_relativeHumidity"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2">
+                            Wind
+                        </div>
+                        <div class="col-sm-10">
+                            <div id="tfc_windCombo"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="hourly" role="tabpanel" aria-labelledby="tabHourly">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">Time</th>
+                                <th scope="col">Temp</th>
+                                <th scope="col">Forcast</th>
+                                <th scope="col">Rain</th>
+                                <th scope="col">Wind</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr id="tableHourly_1">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr id="tableHourly_2">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr id="tableHourly_3">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr id="tableHourly_4">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr id="tableHourly_5">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr id="tableHourly_6">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr id="tableHourly_7">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr id="tableHourly_8">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr id="tableHourly_9">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr id="tableHourly_10">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr id="tableHourly_11">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr id="tableHourly_12">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr id="tableHourly_13">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr id="tableHourly_14">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr id="tableHourly_15">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr id="tableHourly_16">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr id="tableHourly_17">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr id="tableHourly_18">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr id="tableHourly_19">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr id="tableHourly_20">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr id="tableHourly_21">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr id="tableHourly_22">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr id="tableHourly_23">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr id="tableHourly_24">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr id="tableHourly_25">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr id="tableHourly_26">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr id="tableHourly_27">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr id="tableHourly_28">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr id="tableHourly_29">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr id="tableHourly_30">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="tab-pane fade" id="fiveDay" role="tabpanel" aria-labelledby="tabFiveDay">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">Date</th>
+                                <th scope="col">Temp</th>
+                                <th scope="col">Forcast</th>
+                                <th scope="col">Rain</th>
+                                <th scope="col">Wind</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr id="tableFiveDayRow_1">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr id="tableFiveDayRow_2">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr id="tableFiveDayRow_3">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr id="tableFiveDayRow_4">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr id="tableFiveDayRow_5">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr id="tableFiveDayRow_6">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr id="tableFiveDayRow_7">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr id="tableFiveDayRow_8">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr id="tableFiveDayRow_9">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr id="tableFiveDayRow_10">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr id="tableFiveDayRow_11">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr id="tableFiveDayRow_12">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr id="tableFiveDayRow_13">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr id="tableFiveDayRow_14">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="tab-pane fade" id="tides" role="tabpanel" aria-labelledby="tabTides">
+                   Will start working on Tide integration soon
+                </div>
             </div>
         </div>
     </main>
 
+    <!-- Modal -->
+    <div class="modal fade" id="hidePageWithPassword" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Password Protected</h5>
+                    <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>-->
+                </div>
+                <div class="modal-body">
+                    <div class="row rowPadding">
+                        <div class="col-12">
+                            This page isn't necessarily for the general public. It's not secure either, it's just a mockup that i'm lazy to secure properly.
+                        </div>
+                    </div>
+                    <div class="row rowPadding">
+                        <div class="col-12">
+                            <div id="invalidPasswordAlert" class="alert alert-danger" style="display:none;" role="alert">
+                                The username/password combination you tried is invalid...
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row rowPadding">
+                        <div class="col-4">
+                            Username
+                        </div>
+                        <div class="col-8">
+                            <input class="form-control" id="pageUsername" name="pageUsername" type="text">
+                        </div>
+                    </div>
+                    <div class="row rowPadding">
+                        <div class="col-4">
+                            Password
+                        </div>
+                        <div class="col-8">
+                            <input class="form-control" id="pagePassword" name="pagePassword" type="password">
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="submitPasswordBtn" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="otherHiddenStuff" style="display:none">
+        <div id="alertError">
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <div id="alertMessage"></div>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </div>
+        <div id="alertWarning">
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <div id="alertMessage"></div>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </div>
+        <div id="alertPrimary">
+            <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                <div id="alertMessage"></div>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
     <footer class="container">
-        <p>© Nick &amp; Tiff 2022</p>
+        <p>Nicks Weather App</p>
     </footer>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="sic.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //showPasswordModal();
+            initialize();
+        });
+    </script>
 </body>
 </html>
