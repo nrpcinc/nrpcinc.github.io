@@ -15,22 +15,31 @@
     <main role="main">
         <div class="container-fluid">
             <div class="row rowPadding">
+                <div class="col">
+                    <div id="skullNotification" name="_divAlertSection_skullPopup"></div>
+                </div>
+            </div>
+            <div class="row rowPadding">
                 <div class="col-1">
-                    <button type="button" class="btn btn-default" id="btnGoLeft" onclick="changeDirection('up')"> << </button>
                 </div>
                 <div class="col-10">
-                    <img id="skullImage" src="./images/153.png" class="img-fluid" alt="Some skull" />
+
                     <div id="imageplacement">
-                        ???
+                        153
                     </div>
                 </div>
                 <div class="col-1">
-                    <button type="button" class="btn btn-default" id="btnGoRight" onclick="changeDirection('down')"> >> </button>
                 </div>
             </div>
-            <div class="row">
-                <div class="col">
-                    <div id="skullNotification" name="_divAlertSection_skullPopup"></div>
+            <div class="row rowPadding">
+                <div class="col-1">
+                    <button type="button" class="btn btn-primary btn-block h-100" id="btnGoLeft" onclick="changeDirection('up')"> << </button>
+                </div>
+                <div class="col-10">
+                    <img id="skullImage" src="./images/153.png" class="img-fluid" alt="Some skull" />
+                </div>
+                <div class="col-1">
+                    <button type="button" class="btn btn-primary btn-block h-100" id="btnGoRight" onclick="changeDirection('down')"> >> </button>
                 </div>
             </div>
         </div>
