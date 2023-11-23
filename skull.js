@@ -9,6 +9,24 @@ function initializeSkull() {
 
     window.skull.xDown = null;
     window.skull.yDown = null;
+
+    $("#skullImage").on("click", function (event) {
+        var x = event.pageX - this.offsetLeft;
+        var y = event.pageY - this.offsetTop;
+        skullImageClicked(x, y);
+    });
+}
+
+function skullImageClicked(x,y) {
+    document.getElementById("imageplacement").innerHTML = "X Coordinate: " + x + " Y Coordinate: " + y;
+    var halfWidth = ($("#skullImage").width()) / 2;
+    if (x < halfWidth) {
+        changeDirection("down");
+    }
+    else {
+        changeDirection("up");
+    }
+    
 }
 
 function checkKey(e) {
